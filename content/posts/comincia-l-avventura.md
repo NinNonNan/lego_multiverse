@@ -1,5 +1,5 @@
 +++
-date = '2026-04-09T12:33:39+02:00'
+date = '2026-04-09T11:00:00+02:00'
 draft = false
 title = "Comincia l'avventura"
 +++
