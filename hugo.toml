@@ -1,0 +1,10 @@
+baseURL = 'https://www.therpggame.com/'
+languageCode = 'it-it'
+title = 'ILGDR! Devblog'
+theme = 'PaperMod'
+
+[params]
+    # Opzioni specifiche per PaperMod
+    defaultTheme = "auto" # Passa da Light a Dark in base al sistema
+    showCodeCopyButtons = true
+    showReadingTime = true
