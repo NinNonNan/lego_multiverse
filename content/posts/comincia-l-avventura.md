@@ -1,7 +1,7 @@
 +++
 date = '2026-04-09T12:33:39+02:00'
 draft = false
-title = 'Comincia l'avventura'
+title = "Comincia l'avventura"
 +++
 
 Si comincia quello che spero possa essere l'inizio di un lungo viaggio (come cantava Bilbo) un unico gioco che possa contenere al suo interno tutto quello che negli anni ho apprezzato, sperimentato e vissuto.
