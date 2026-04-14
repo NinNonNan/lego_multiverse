@@ -6,8 +6,22 @@
     <description>Recent content on ILGDR! Devblog</description>
     <generator>Hugo</generator>
     <language>it-it</language>
-    <lastBuildDate>Fri, 10 Apr 2026 11:09:32 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 14 Apr 2026 10:00:00 +0200</lastBuildDate>
     <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>ILGDR! sbarca su Ko-fi</title>
+      <link>http://localhost:1313/posts/me-lo-offri-un-caffe/</link>
+      <pubDate>Tue, 14 Apr 2026 10:00:00 +0200</pubDate>
+      <guid>http://localhost:1313/posts/me-lo-offri-un-caffe/</guid>
+      <description>&lt;p&gt;Piccolo aggiornamento di viaggio.&lt;/p&gt;
+&lt;p&gt;Ho aperto la pagina Ko-fi di ILGDR!&lt;/p&gt;
+&lt;p&gt;Non è un cambio di direzione, né un “adesso si monetizza tutto”.
+Il progetto resta esattamente quello di prima: un GDR testuale, un po’ strano, pieno di idee, esperimenti e tentativi.&lt;/p&gt;
+&lt;p&gt;Ko-fi è semplicemente un modo per:&lt;/p&gt;
+&lt;p&gt;supportare lo sviluppo, se va
+seguire il progetto più da vicino
+e magari, in futuro, accedere a versioni anticipate o contenuti extra&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Diventa BETA WARRIOR!</title>
       <link>http://localhost:1313/posts/dammi-la-beta/</link>
@@ -22,9 +36,12 @@
       <link>http://localhost:1313/posts/comincia-l-avventura/</link>
       <pubDate>Thu, 09 Apr 2026 11:00:00 +0200</pubDate>
       <guid>http://localhost:1313/posts/comincia-l-avventura/</guid>
-      <description>&lt;p&gt;Si comincia quello che spero possa essere l’inizio di un lungo viaggio (come cantava Bilbo), un unico gioco che possa contenere al suo interno tutto quello che negli anni ho apprezzato, sperimentato e vissuto.&lt;/p&gt;
-&lt;p&gt;Un, anzi &lt;em&gt;IL&lt;/em&gt; GDR dalla grafica praticamente inesistente — e quando c’è, a volte è pure bruttina — ma che nelle intenzioni vuole provare a dire qualcosa.&lt;/p&gt;
-&lt;p&gt;Lo intitolo, con molta modestia, &lt;strong&gt;ILGDR!&lt;/strong&gt; tutto maiuscolo e senza spazi, per non lasciare spazio a fraintendimenti.&lt;/p&gt;</description>
+      <description>&lt;p&gt;Si comincia.&lt;/p&gt;
+&lt;p&gt;Quello che spero possa essere l’inizio di un lungo viaggio (come cantava Bilbo), un unico gioco capace di contenere tutto ciò che negli anni ho apprezzato, sperimentato e vissuto.&lt;/p&gt;
+&lt;p&gt;Un, anzi &lt;em&gt;IL&lt;/em&gt; GDR.&lt;/p&gt;
+&lt;p&gt;Un gioco dalla grafica praticamente inesistente — e quando c’è, a volte è pure bruttina — ma che, nelle intenzioni, vuole provare a dire qualcosa.&lt;/p&gt;
+&lt;p&gt;Lo intitolo, con molta modestia: &lt;strong&gt;ILGDR!&lt;/strong&gt;&lt;br&gt;
+Tutto maiuscolo, senza spazi. Niente compromessi, niente fraintendimenti.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

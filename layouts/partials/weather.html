@@ -1,5 +1,5 @@
-<div class="weather-rpg" id="weather-rpg" style="display: block; max-width: var(--main-width); margin: 0 auto; padding: 0 var(--gap);">
-    <div style="display: flex; align-items: center; gap: 20px; padding: 10px 0; margin: 10px 0;">      
+<div class="weather-rpg" id="weather-rpg" style="display: block; max-width: var(--main-width); margin: 20px auto 10px auto; padding: 10px var(--gap); border-top: 1px dashed var(--border); border-bottom: 1px dashed var(--border);">
+    <div style="display: flex; align-items: center; gap: 20px;">
         <span id="w-icon" style="font-size: 3.5em; line-height: 1;">🌍</span>        
         <div style="line-height: 1.4;">
             <div id="w-fase" style="font-weight: 900; text-transform: uppercase; font-size: 1.2em; color: var(--secondary); letter-spacing: 1px;">
@@ -25,7 +25,7 @@
             document.getElementById('w-desc').innerText = `${d.meteo} • ${d.temperatura} • Magia ${d.condizione_magica}`;
             document.getElementById('weather-rpg').style.display = 'block';
 
-            // IL TELEPORTO: Sposta il widget sotto l'header del blog (il titolo)
+            // Ripristina lo spostamento sotto l'header (titolo del blog)
             const header = document.querySelector('header.header');
             if (header) {
                 header.after(document.getElementById('weather-rpg'));

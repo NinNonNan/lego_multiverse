@@ -1,6 +1,9 @@
-<div style="margin: 40px 0; padding: 10px 0; border-top: 1px dashed var(--border); border-bottom: 1px dashed var(--border);">
-    <div style="font-size: 0.7em; opacity: 0.5; font-weight: bold; text-transform: uppercase; margin-bottom: 5px; letter-spacing: 1px;">
-        {{ .Get "title" | default "Supporta il progetto" }}
-    </div>
+<div class="links-shortcode-container" style="margin: 40px 0; padding: 10px 0; border-top: 1px dashed var(--border); border-bottom: 1px dashed var(--border);">
+    <style>
+        .links-shortcode-container a {
+            text-decoration: none !important;
+            box-shadow: none !important;
+        }
+    </style>
     {{ partial "social_icons.html" (dict "socialIcons" site.Params.socialIcons "align" "left") }}
 </div>
