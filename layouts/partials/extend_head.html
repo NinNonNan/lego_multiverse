@@ -1,57 +1,19 @@
 <!-- Cookie Consent -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@v3.0.1/dist/cookieconsent.css">
-
 <script src="https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@v3.0.1/dist/cookieconsent.umd.js"></script>
+
 <script>
     CookieConsent.run({
-        language: {
-            default: 'it',
-            translations: {
-                it: {
-                    consentModal: {
-                        title: 'Gestione Cookie',
-                        description: 'Questo sito utilizza i cookie per migliorare la tua esperienza di navigazione e analizzare il traffico.',
-                        acceptAllBtn: 'Accetta tutto',
-                        acceptNecessaryBtn: 'Rifiuta tutto',
-                        showPreferencesBtn: 'Preferenze'
-                    },
-                    preferencesModal: {
-                        title: 'Preferenze Cookie',
-                        acceptAllBtn: 'Accetta tutto',
-                        acceptNecessaryBtn: 'Rifiuta tutto',
-                        savePreferencesBtn: 'Salva preferenze',
-                        sections: [
-                            {
-                                title: 'Cookie necessari',
-                                description: 'Questi cookie sono essenziali per il funzionamento del sito.',
-                                linkedCategory: 'necessary'
-                            },
-                            {
-                                title: 'Analisi',
-                                description: 'Utilizzati per raccogliere dati statistici in forma anonima.',
-                                linkedCategory: 'analytics'
-                            }
-                        ]
-                    }
-                }
-            }
-        },
-        guiOptions: {
-            consentModal: { layout: 'cloud inline', position: 'bottom right' },
-            preferencesModal: { layout: 'box' }
-        },
+        // ... (la tua configurazione attuale va bene, assicurati solo che sia dentro .run) ...
         categories: {
             necessary: { readOnly: true },
-            analytics: { enabled: true, readOnly: false },
-            ads: { enabled: false, readOnly: false }
+            analytics: { enabled: false, readOnly: false } // Imposta a false inizialmente
         },
-        onConsent: ({cookie}) => {
+        onConsent: () => {
+            // Logica per attivare GTM dopo il consenso
+            console.log('Consenso aggiornato');
             window.dataLayer = window.dataLayer || [];
-            window.dataLayer.push({
-                event: 'consent_update',
-                analytics_granted: cookie.categories.includes('analytics'),
-                ads_granted: cookie.categories.includes('ads')
-            });
+            window.dataLayer.push({'event': 'consent_update'});
         }
     });
 </script>
