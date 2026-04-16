@@ -76,6 +76,115 @@ Tutto maiuscolo, senza spazi. Niente compromessi, niente fraintendimenti.">
     }
 
 </script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@v3.1.0/dist/cookieconsent.css">
+<script src="https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@v3.1.0/dist/cookieconsent.umd.js"></script>
+
+<style>
+     
+    #cc-main {
+        --cc-bg: #fff;  
+        --cc-primary-color: #2d4156;
+        --cc-secondary-color: #555;
+        
+         
+        --cc-btn-primary-bg: #333; 
+        --cc-btn-primary-hover-bg: #000;
+        
+         
+        --cc-modal-border-radius: 0px; 
+        --cc-btn-border-radius: 4px;
+    }
+
+     
+    @media (prefers-color-scheme: dark) {
+        #cc-main { --cc-bg: #1a1a1a; --cc-primary-color: #eee; }
+    }
+</style>
+
+<script>
+window.addEventListener('load', function () {
+    CookieConsent.run({
+        guiOptions: {
+            consentModal: {
+                layout: "box",
+                position: "bottom right",
+                equalWeightButtons: true,
+                flipButtons: false
+            },
+            settingsModal: {
+                layout: "list",
+                position: "left",
+                equalWeightButtons: true,
+                flipButtons: false
+            }
+        },
+        categories: {
+            necessary: { readOnly: true },
+            analytics: { enabled: false, readOnly: false }
+        },
+        language: {
+            default: "it",
+            translations: {
+                it: {
+                    consentModal: {
+                        title: "Gestione Cookie",
+                        description: "Ciao! Usiamo i cookie per migliorare la tua esperienza sul Devblog di ILGDR!.",
+                        acceptAllBtn: "Accetta tutti",
+                        acceptNecessaryBtn: "Rifiuta tutto",
+                        showSettingsBtn: "Personalizza",
+                    },
+                    settingsModal: {
+                        title: "Preferenze Cookie",
+                        acceptAllBtn: "Accetta tutti",
+                        acceptNecessaryBtn: "Rifiuta tutto",
+                        saveSettingsBtn: "Salva impostazioni",
+                        closeIconLabel: "Chiudi",
+                        sections: [
+                            {
+                                title: "Cookie strettamente necessari",
+                                description: "Questi cookie sono essenziali per il corretto funzionamento del sito.",
+                                linkedCategory: "necessary"
+                            },
+                            {
+                                title: "Cookie Analitici",
+                                description: "Questi cookie ci aiutano a capire come interagisci con il sito.",
+                                linkedCategory: "analytics"
+                            }
+                        ]
+                    }
+                }
+            }
+        },
+        onConsent: ({cookie}) => {
+            if (CookieConsent.acceptedCategory('analytics')) {
+                window.dataLayer = window.dataLayer || [];
+                window.dataLayer.push({
+                    'event': 'consent_update',
+                    'analytics_storage': 'granted'
+                });
+            }
+        },
+        onChange: ({changedCategories}) => {
+            if (changedCategories.includes('analytics')) {
+                const status = CookieConsent.acceptedCategory('analytics') ? 'granted' : 'denied';
+                window.dataLayer.push({
+                    'event': 'consent_update',
+                    'analytics_storage': status
+                });
+            }
+        }
+    });
+});
+</script>
+
+
+
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-NLZMQ8SD');</script>
+
 </head>
 <body id="top">
     <header class="header">
@@ -188,8 +297,8 @@ Tutto maiuscolo, senza spazi. Niente compromessi, niente fraintendimenti.</p>
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
         <path d="M12 6H0l6-6z" />
     </svg>
-</a><div class="weather-rpg" id="weather-rpg" style="display: block; max-width: var(--main-width); margin: 0 auto; padding: 0 var(--gap);">
-    <div style="display: flex; align-items: center; gap: 20px; padding: 10px 0; margin: 10px 0;">      
+</a><div class="weather-rpg" id="weather-rpg" style="display: block; max-width: var(--main-width); margin: 20px auto 10px auto; padding: 10px var(--gap); border-top: 1px dashed var(--border); border-bottom: 1px dashed var(--border);">
+    <div style="display: flex; align-items: center; gap: 20px;">
         <span id="w-icon" style="font-size: 3.5em; line-height: 1;">🌍</span>        
         <div style="line-height: 1.4;">
             <div id="w-fase" style="font-weight: 900; text-transform: uppercase; font-size: 1.2em; color: var(--secondary); letter-spacing: 1px;">
@@ -224,6 +333,11 @@ Tutto maiuscolo, senza spazi. Niente compromessi, niente fraintendimenti.</p>
     }
     updateWeather();
 </script>
+
+
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NLZMQ8SD"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
 
 <script>
     let menu = document.getElementById('menu');

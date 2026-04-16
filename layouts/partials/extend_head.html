@@ -1,6 +1,28 @@
 <!-- Cookie Consent -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@v3.0.1/dist/cookieconsent.css">
-<script src="https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@v3.0.1/dist/cookieconsent.umd.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@v3.1.0/dist/cookieconsent.css">
+<script src="https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@v3.1.0/dist/cookieconsent.umd.js"></script>
+
+<style>
+    /* Personalizzazione per adattarlo allo stile RPG del blog */
+    #cc-main {
+        --cc-bg: #fff; /* O var(--theme) se hai un tema dark/light */
+        --cc-primary-color: #2d4156;
+        --cc-secondary-color: #555;
+        
+        /* Usa il colore 'secondary' del tuo blog per il bottone principale */
+        --cc-btn-primary-bg: #333; 
+        --cc-btn-primary-hover-bg: #000;
+        
+        /* Stile dei bordi simile al widget meteo */
+        --cc-modal-border-radius: 0px; 
+        --cc-btn-border-radius: 4px;
+    }
+
+    /* Se il tuo blog ha un tema scuro, puoi usare le media query */
+    @media (prefers-color-scheme: dark) {
+        #cc-main { --cc-bg: #1a1a1a; --cc-primary-color: #eee; }
+    }
+</style>
 
 <script>
 window.addEventListener('load', function () {

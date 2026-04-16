@@ -2,13 +2,22 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/posts/dammi-la-beta/</loc>
-    <lastmod>2026-04-10T11:09:32+02:00</lastmod>
-  </url><url>
     <loc>http://localhost:1313/</loc>
-    <lastmod>2026-04-10T11:09:32+02:00</lastmod>
+    <lastmod>2026-04-15T16:37:58+02:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/nuova-release/</loc>
+    <lastmod>2026-04-15T16:37:58+02:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/posts/</loc>
+    <lastmod>2026-04-15T16:37:58+02:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/piccole-cose/</loc>
+    <lastmod>2026-04-15T11:00:24+02:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/me-lo-offri-un-caffe/</loc>
+    <lastmod>2026-04-14T10:00:00+02:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/dammi-la-beta/</loc>
     <lastmod>2026-04-10T11:09:32+02:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/posts/comincia-l-avventura/</loc>
