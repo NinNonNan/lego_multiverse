@@ -1,6 +1,5 @@
 <!-- Cookie Consent -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@v3.1.0/dist/cookieconsent.css">
-<script src="https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@v3.1.0/dist/cookieconsent.umd.js"></script>
 
 <style>
     /* Personalizzazione per adattarlo allo stile RPG del blog */
@@ -25,79 +24,8 @@
 </style>
 
 <script>
-window.addEventListener('load', function () {
-    CookieConsent.run({
-        guiOptions: {
-            consentModal: {
-                layout: "box",
-                position: "bottom right",
-                equalWeightButtons: true,
-                flipButtons: false
-            },
-            settingsModal: {
-                layout: "list",
-                position: "left",
-                equalWeightButtons: true,
-                flipButtons: false
-            }
-        },
-        categories: {
-            necessary: { readOnly: true },
-            analytics: { enabled: false, readOnly: false }
-        },
-        language: {
-            default: "it",
-            translations: {
-                it: {
-                    consentModal: {
-                        title: "Gestione Cookie",
-                        description: "Ciao! Usiamo i cookie per migliorare la tua esperienza sul Devblog di ILGDR!.",
-                        acceptAllBtn: "Accetta tutti",
-                        acceptNecessaryBtn: "Rifiuta tutto",
-                        showSettingsBtn: "Personalizza",
-                    },
-                    settingsModal: {
-                        title: "Preferenze Cookie",
-                        acceptAllBtn: "Accetta tutti",
-                        acceptNecessaryBtn: "Rifiuta tutto",
-                        saveSettingsBtn: "Salva impostazioni",
-                        closeIconLabel: "Chiudi",
-                        sections: [
-                            {
-                                title: "Cookie strettamente necessari",
-                                description: "Questi cookie sono essenziali per il corretto funzionamento del sito.",
-                                linkedCategory: "necessary"
-                            },
-                            {
-                                title: "Cookie Analitici",
-                                description: "Questi cookie ci aiutano a capire come interagisci con il sito.",
-                                linkedCategory: "analytics"
-                            }
-                        ]
-                    }
-                }
-            }
-        },
-        onConsent: ({cookie}) => {
-            if (CookieConsent.acceptedCategory('analytics')) {
-                window.dataLayer = window.dataLayer || [];
-                window.dataLayer.push({
-                    'event': 'consent_update',
-                    'analytics_storage': 'granted'
-                });
-            }
-        },
-        onChange: ({changedCategories}) => {
-            if (changedCategories.includes('analytics')) {
-                const status = CookieConsent.acceptedCategory('analytics') ? 'granted' : 'denied';
-                window.dataLayer.push({
-                    'event': 'consent_update',
-                    'analytics_storage': status
-                });
-            }
-        }
-    });
-});
+/** Inizializza dataLayer per GTM */
+window.dataLayer = window.dataLayer || [];
 </script>
 <!-- End Cookie Consent -->
 

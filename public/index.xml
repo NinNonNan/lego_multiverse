@@ -6,8 +6,20 @@
     <description>Recent content on ILGDR! Devblog</description>
     <generator>Hugo</generator>
     <language>it-it</language>
-    <lastBuildDate>Wed, 15 Apr 2026 16:37:58 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 16 Apr 2026 10:00:00 +0200</lastBuildDate>
     <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Privacy Policy e Cookie Policy</title>
+      <link>http://localhost:1313/privacy-policy/</link>
+      <pubDate>Thu, 16 Apr 2026 10:00:00 +0200</pubDate>
+      <guid>http://localhost:1313/privacy-policy/</guid>
+      <description>&lt;h1 id=&#34;privacy-policy-e-cookie-policy&#34;&gt;Privacy Policy e Cookie Policy&lt;/h1&gt;
+&lt;p&gt;Benvenuto nella pagina dedicata alla privacy di &lt;strong&gt;ILGDR! Devblog&lt;/strong&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;1-cookie-e-tracciamento&#34;&gt;1. Cookie e Tracciamento&lt;/h2&gt;
+&lt;p&gt;Utilizziamo cookie tecnici per far funzionare il sito e ricordarci le tue preferenze. Utilizziamo inoltre Google Analytics (tramite Google Tag Manager) per raccogliere statistiche anonime sulle visite, ma solo se ci fornisci il tuo consenso esplicito.&lt;/p&gt;
+&lt;h2 id=&#34;2-gestione-del-consenso&#34;&gt;2. Gestione del Consenso&lt;/h2&gt;
+&lt;p&gt;In conformità con il GDPR, hai il diritto di modificare o revocare il tuo consenso in qualsiasi momento. Puoi farlo cliccando sul link &lt;strong&gt;&amp;ldquo;Modifica preferenze cookie&amp;rdquo;&lt;/strong&gt; presente nel footer di tutte le pagine.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Nuova Release</title>
       <link>http://localhost:1313/posts/nuova-release/</link>

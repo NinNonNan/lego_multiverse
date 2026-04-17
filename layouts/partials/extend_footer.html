@@ -4,3 +4,86 @@
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NLZMQ8SD"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
+
+<!-- Link per riaprire le preferenze cookie -->
+<div style="text-align: center; margin-top: 20px; font-size: 0.9em;">
+    <a href="javascript:void(0)" id="open-cookie-settings" style="color: var(--secondary); text-decoration: underline;">Modifica preferenze cookie</a>
+</div>
+
+<!-- Script Cookie Consent spostato nel footer per evitare errori di caricamento -->
+<script src="https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@v3.1.0/dist/cookieconsent.umd.js"></script>
+<script>
+    CookieConsent.run({
+        guiOptions: {
+            consentModal: {
+                layout: "box",
+                position: "bottom right",
+                equalWeightButtons: true,
+                flipButtons: false
+            },
+            settingsModal: {
+                layout: "box",
+                position: "left",
+                equalWeightButtons: true,
+                flipButtons: false
+            }
+        },
+        categories: {
+            necessary: { readOnly: true },
+            analytics: { enabled: false, readOnly: false }
+        },
+        language: {
+            default: "it",
+            translations: {
+                it: {
+                    consentModal: {
+                        title: "Gestione Cookie",
+                        description: "Ciao! Usiamo i cookie per migliorare la tua esperienza sul Devblog di ILGDR!. Puoi accettare tutto, rifiutare o personalizzare le tue scelte. Per maggiori informazioni, consulta la nostra <a href='/privacy-policy'>Cookie Policy</a>.",
+                        acceptAllBtn: "Accetta tutti",
+                        acceptNecessaryBtn: "Rifiuta tutto",
+                        showSettingsBtn: "Personalizza",
+                        closeIconLabel: "Chiudi",
+                        footer: '<a href="/privacy-policy">Privacy Policy</a>'
+                    },
+                    settingsModal: {
+                        title: "Preferenze Cookie",
+                        acceptAllBtn: "Accetta tutti",
+                        acceptNecessaryBtn: "Rifiuta tutto",
+                        saveSettingsBtn: "Salva impostazioni",
+                        closeIconLabel: "Chiudi",
+                        sections: [
+                            {
+                                title: "Cookie strettamente necessari",
+                                description: "Questi cookie sono essenziali per il corretto funzionamento del sito.",
+                                linkedCategory: "necessary"
+                            },
+                            {
+                                title: "Cookie Analitici",
+                                description: "Questi cookie ci aiutano a capire come interagisci con il sito.",
+                                linkedCategory: "analytics"
+                            }
+                        ]
+                    }
+                }
+            }
+        },
+        onConsent: ({cookie}) => {
+            if (cookie.categories.includes('analytics')) {
+                window.dataLayer.push({ 'event': 'consent_update', 'analytics_storage': 'granted' });
+            }
+        },
+        onChange: ({cookie, changedCategories}) => {
+            if (changedCategories.includes('analytics')) {
+                const status = cookie.categories.includes('analytics') ? 'granted' : 'denied';
+                window.dataLayer.push({ 'event': 'consent_update', 'analytics_storage': status });
+            }
+        }
+    });
+</script>
+
+<script>
+    document.getElementById('open-cookie-settings').addEventListener('click', function(e) {
+        e.preventDefault();
+        if (typeof CookieConsent !== 'undefined') { CookieConsent.showPreferences(); }
+    });
+</script>

@@ -98,7 +98,10 @@
 </style>
 
 <script>
-window.addEventListener('load', function () {
+ 
+window.dataLayer = window.dataLayer || [];
+
+document.addEventListener('DOMContentLoaded', function () {
     CookieConsent.run({
         guiOptions: {
             consentModal: {
@@ -108,7 +111,7 @@ window.addEventListener('load', function () {
                 flipButtons: false
             },
             settingsModal: {
-                layout: "list",
+                layout: "box",
                 position: "left",
                 equalWeightButtons: true,
                 flipButtons: false
@@ -124,10 +127,12 @@ window.addEventListener('load', function () {
                 it: {
                     consentModal: {
                         title: "Gestione Cookie",
-                        description: "Ciao! Usiamo i cookie per migliorare la tua esperienza sul Devblog di ILGDR!.",
+                        description: "Ciao! Usiamo i cookie per migliorare la tua esperienza sul Devblog di ILGDR!. Puoi accettare tutto, rifiutare o personalizzare le tue scelte. Per maggiori informazioni, consulta la nostra <a href='/privacy-policy'>Cookie Policy</a>.",
                         acceptAllBtn: "Accetta tutti",
                         acceptNecessaryBtn: "Rifiuta tutto",
                         showSettingsBtn: "Personalizza",
+                        closeIconLabel: "Chiudi", 
+                        footer: '<a href="/privacy-policy">Privacy Policy</a>'
                     },
                     settingsModal: {
                         title: "Preferenze Cookie",
@@ -152,17 +157,16 @@ window.addEventListener('load', function () {
             }
         },
         onConsent: ({cookie}) => {
-            if (CookieConsent.acceptedCategory('analytics')) {
-                window.dataLayer = window.dataLayer || [];
+            if (cookie.categories.includes('analytics')) {
                 window.dataLayer.push({
                     'event': 'consent_update',
                     'analytics_storage': 'granted'
                 });
             }
         },
-        onChange: ({changedCategories}) => {
+        onChange: ({cookie, changedCategories}) => {
             if (changedCategories.includes('analytics')) {
-                const status = CookieConsent.acceptedCategory('analytics') ? 'granted' : 'denied';
+                const status = cookie.categories.includes('analytics') ? 'granted' : 'denied';
                 window.dataLayer.push({
                     'event': 'consent_update',
                     'analytics_storage': status
@@ -277,6 +281,18 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NLZMQ8SD"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
+
+
+<div style="text-align: center; margin-top: 20px; font-size: 0.9em;">
+    <a href="javascript:void(0)" id="open-cookie-settings" style="color: var(--secondary); text-decoration: underline;">Modifica preferenze cookie</a>
+</div>
+
+<script>
+    document.getElementById('open-cookie-settings').addEventListener('click', function(e) {
+        e.preventDefault();
+        if (typeof CookieConsent !== 'undefined') { CookieConsent.showPreferences(); }
+    });
+</script>
 
 <script>
     let menu = document.getElementById('menu');
