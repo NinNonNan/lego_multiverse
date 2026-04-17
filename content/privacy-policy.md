@@ -4,8 +4,6 @@ draft = false
 title = 'Privacy Policy e Cookie Policy'
 +++
 
-# Privacy Policy e Cookie Policy
-
 Benvenuto nella pagina dedicata alla privacy di **ILGDR! Devblog**.
 
 ## 1. Cookie e Tracciamento

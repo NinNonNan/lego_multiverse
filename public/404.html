@@ -76,28 +76,110 @@
 <style>
      
     #cc-main {
-        --cc-bg: #fff;  
-        --cc-primary-color: #2d4156;
-        --cc-secondary-color: #555;
+         
+        --cc-bg: var(--theme, #fff);
+        --cc-primary-color: var(--secondary, #2d4156);
+        --cc-secondary-color: var(--content, #555);
+        
+        --cc-btn-primary-bg: var(--secondary, #333); 
+        --cc-btn-primary-text: var(--theme, #fff);
+        --cc-btn-primary-hover-bg: var(--tertiary, #000);
+
+        --cc-btn-secondary-bg: var(--tertiary, #eee);
+        --cc-btn-secondary-text: var(--secondary, #333);
+        --cc-btn-secondary-hover-bg: var(--border, #ddd);
         
          
-        --cc-btn-primary-bg: #333; 
-        --cc-btn-primary-hover-bg: #000;
-        
+        --cc-modal-border-radius: 0px;
+        --cc-btn-border-radius: 2px;
+        --cc-separator-border-color: var(--border, #eee);
+        --cc-footer-bg: var(--tertiary, #f9f9f9);
+
          
-        --cc-modal-border-radius: 0px; 
-        --cc-btn-border-radius: 4px;
+        z-index: 9999999 !important;
     }
 
      
-    @media (prefers-color-scheme: dark) {
-        #cc-main { --cc-bg: #1a1a1a; --cc-primary-color: #eee; }
+    .dark #cc-main {
+        --cc-bg: var(--theme, #1a1a1a);
+        --cc-primary-color: var(--secondary, #eee);
+        --cc-footer-bg: #252525;
     }
 </style>
 
+
+<script src="https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@v3.1.0/dist/cookieconsent.umd.js"></script>
+
 <script>
- 
-window.dataLayer = window.dataLayer || [];
+     
+    window.dataLayer = window.dataLayer || [];
+
+     
+    document.addEventListener('DOMContentLoaded', function(){
+        console.log("CookieConsent: Inizializzazione in corso...");
+        
+        try {
+            CookieConsent.run({
+                guiOptions: {
+                    consentModal: {
+                        layout: 'box',
+                        position: 'bottom right',
+                        equalWeightButtons: true
+                    },
+                    preferencesModal: {
+                        layout: 'box',
+                        position: 'right',
+                        equalWeightButtons: true
+                    }
+                },
+                categories: {
+                    necessary: {
+                        enabled: true,
+                        readOnly: true
+                    },
+                    analytics: {
+                        enabled: false,
+                        readOnly: false
+                    }
+                },
+                language: {
+                    default: 'it',
+                    translations: {
+                        it: {
+                            consentModal: {
+                                title: 'Consenso Cookie',
+                                description: 'Utilizziamo i cookie per migliorare l\'esperienza e analizzare il traffico del blog. Per maggiori informazioni, consulta la nostra <a href="/privacy-policy/" target="_blank">Privacy Policy</a>.',
+                                acceptAllBtn: 'Accetta tutti',
+                                acceptNecessaryBtn: 'Rifiuta tutti',
+                                showPreferencesBtn: 'Gestisci preferenze'
+                            },
+                            preferencesModal: {
+                                title: 'Preferenze Cookie',
+                                savePreferencesBtn: 'Salva impostazioni',
+                                acceptAllBtn: 'Accetta tutti',
+                                acceptNecessaryBtn: 'Rifiuta tutti',
+                                closeIconLabel: 'Chiudi',
+                                sections: [
+                                    {
+                                        title: 'Cookie tecnici',
+                                        description: 'Questi cookie sono necessari per il funzionamento del sito.'
+                                    },
+                                    {
+                                        title: 'Cookie analitici',
+                                        description: 'Ci aiutano a capire come i visitatori interagiscono con il sito.',
+                                        linkedCategory: 'analytics'
+                                    }
+                                ]
+                            }
+                        },
+                    }
+                }
+            });
+            console.log("CookieConsent: Configurazione caricata.");
+        } catch (e) {
+            console.error("CookieConsent: Errore durante l'esecuzione:", e);
+        }
+    });
 </script>
 
 
@@ -195,93 +277,26 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     updateWeather();
 </script>
 
+<span id="cc-footer-link" style="display: none;">
+    <span style="opacity: 0.5; margin: 0 5px;">·</span>
+    <button type="button" onclick="CookieConsent.showPreferences()" style="background: none; border: none; text-decoration: underline; color: var(--secondary); cursor: pointer; font-size: inherit; font-family: inherit; padding: 0;">Preferenze Cookie</button>
+</span>
+
+<script>
+    (function() {
+        var footer = document.querySelector('footer.footer');
+        var link = document.getElementById('cc-footer-link');
+        if (footer && link) {
+            footer.appendChild(link);
+            link.style.display = 'inline';
+        }
+    })();
+</script>
+
 
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NLZMQ8SD"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
-
-
-<div style="text-align: center; margin-top: 20px; font-size: 0.9em;">
-    <a href="javascript:void(0)" id="open-cookie-settings" style="color: var(--secondary); text-decoration: underline;">Modifica preferenze cookie</a>
-</div>
-
-
-<script src="https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@v3.1.0/dist/cookieconsent.umd.js"></script>
-<script>
-    CookieConsent.run({
-        guiOptions: {
-            consentModal: {
-                layout: "box",
-                position: "bottom right",
-                equalWeightButtons: true,
-                flipButtons: false
-            },
-            settingsModal: {
-                layout: "box",
-                position: "left",
-                equalWeightButtons: true,
-                flipButtons: false
-            }
-        },
-        categories: {
-            necessary: { readOnly: true },
-            analytics: { enabled: false, readOnly: false }
-        },
-        language: {
-            default: "it",
-            translations: {
-                it: {
-                    consentModal: {
-                        title: "Gestione Cookie",
-                        description: "Ciao! Usiamo i cookie per migliorare la tua esperienza sul Devblog di ILGDR!. Puoi accettare tutto, rifiutare o personalizzare le tue scelte. Per maggiori informazioni, consulta la nostra <a href='/privacy-policy'>Cookie Policy</a>.",
-                        acceptAllBtn: "Accetta tutti",
-                        acceptNecessaryBtn: "Rifiuta tutto",
-                        showSettingsBtn: "Personalizza",
-                        closeIconLabel: "Chiudi",
-                        footer: '<a href="/privacy-policy">Privacy Policy</a>'
-                    },
-                    settingsModal: {
-                        title: "Preferenze Cookie",
-                        acceptAllBtn: "Accetta tutti",
-                        acceptNecessaryBtn: "Rifiuta tutto",
-                        saveSettingsBtn: "Salva impostazioni",
-                        closeIconLabel: "Chiudi",
-                        sections: [
-                            {
-                                title: "Cookie strettamente necessari",
-                                description: "Questi cookie sono essenziali per il corretto funzionamento del sito.",
-                                linkedCategory: "necessary"
-                            },
-                            {
-                                title: "Cookie Analitici",
-                                description: "Questi cookie ci aiutano a capire come interagisci con il sito.",
-                                linkedCategory: "analytics"
-                            }
-                        ]
-                    }
-                }
-            }
-        },
-        onConsent: ({cookie}) => {
-            if (cookie.categories.includes('analytics')) {
-                window.dataLayer.push({ 'event': 'consent_update', 'analytics_storage': 'granted' });
-            }
-        },
-        onChange: ({cookie, changedCategories}) => {
-            if (changedCategories.includes('analytics')) {
-                const status = cookie.categories.includes('analytics') ? 'granted' : 'denied';
-                window.dataLayer.push({ 'event': 'consent_update', 'analytics_storage': status });
-            }
-        }
-    });
-</script>
-
-<script>
-    document.getElementById('open-cookie-settings').addEventListener('click', function(e) {
-        e.preventDefault();
-        if (typeof CookieConsent !== 'undefined') { CookieConsent.showPreferences(); }
-    });
-</script>
 
 <script>
     let menu = document.getElementById('menu');

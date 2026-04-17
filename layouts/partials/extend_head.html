@@ -4,28 +4,110 @@
 <style>
     /* Personalizzazione per adattarlo allo stile RPG del blog */
     #cc-main {
-        --cc-bg: #fff; /* O var(--theme) se hai un tema dark/light */
-        --cc-primary-color: #2d4156;
-        --cc-secondary-color: #555;
+        /* Usa le variabili del tema del blog */
+        --cc-bg: var(--theme, #fff);
+        --cc-primary-color: var(--secondary, #2d4156);
+        --cc-secondary-color: var(--content, #555);
         
-        /* Usa il colore 'secondary' del tuo blog per il bottone principale */
-        --cc-btn-primary-bg: #333; 
-        --cc-btn-primary-hover-bg: #000;
+        --cc-btn-primary-bg: var(--secondary, #333); 
+        --cc-btn-primary-text: var(--theme, #fff);
+        --cc-btn-primary-hover-bg: var(--tertiary, #000);
+
+        --cc-btn-secondary-bg: var(--tertiary, #eee);
+        --cc-btn-secondary-text: var(--secondary, #333);
+        --cc-btn-secondary-hover-bg: var(--border, #ddd);
         
-        /* Stile dei bordi simile al widget meteo */
-        --cc-modal-border-radius: 0px; 
-        --cc-btn-border-radius: 4px;
+        /* Stile RPG: angoli netti o poco arrotondati */
+        --cc-modal-border-radius: 0px;
+        --cc-btn-border-radius: 2px;
+        --cc-separator-border-color: var(--border, #eee);
+        --cc-footer-bg: var(--tertiary, #f9f9f9);
+
+        /* Forza lo z-index per essere sicuri che sia sopra il widget meteo */
+        z-index: 9999999 !important;
     }
 
-    /* Se il tuo blog ha un tema scuro, puoi usare le media query */
-    @media (prefers-color-scheme: dark) {
-        #cc-main { --cc-bg: #1a1a1a; --cc-primary-color: #eee; }
+    /* Supporto per il tema scuro se il blog usa la classe .dark sul body */
+    .dark #cc-main {
+        --cc-bg: var(--theme, #1a1a1a);
+        --cc-primary-color: var(--secondary, #eee);
+        --cc-footer-bg: #252525;
     }
 </style>
 
+<!-- Caricamento Libreria Cookie Consent v3 -->
+<script src="https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@v3.1.0/dist/cookieconsent.umd.js"></script>
+
 <script>
-/** Inizializza dataLayer per GTM */
-window.dataLayer = window.dataLayer || [];
+    /** Inizializza dataLayer per GTM */
+    window.dataLayer = window.dataLayer || [];
+
+    /** Attendi che il DOM sia pronto */
+    document.addEventListener('DOMContentLoaded', function(){
+        console.log("CookieConsent: Inizializzazione in corso...");
+        
+        try {
+            CookieConsent.run({
+                guiOptions: {
+                    consentModal: {
+                        layout: 'box',
+                        position: 'bottom right',
+                        equalWeightButtons: true
+                    },
+                    preferencesModal: {
+                        layout: 'box',
+                        position: 'right',
+                        equalWeightButtons: true
+                    }
+                },
+                categories: {
+                    necessary: {
+                        enabled: true,
+                        readOnly: true
+                    },
+                    analytics: {
+                        enabled: false,
+                        readOnly: false
+                    }
+                },
+                language: {
+                    default: 'it',
+                    translations: {
+                        it: {
+                            consentModal: {
+                                title: 'Consenso Cookie',
+                                description: 'Utilizziamo i cookie per migliorare l\'esperienza e analizzare il traffico del blog. Per maggiori informazioni, consulta la nostra <a href="/privacy-policy/" target="_blank">Privacy Policy</a>.',
+                                acceptAllBtn: 'Accetta tutti',
+                                acceptNecessaryBtn: 'Rifiuta tutti',
+                                showPreferencesBtn: 'Gestisci preferenze'
+                            },
+                            preferencesModal: {
+                                title: 'Preferenze Cookie',
+                                savePreferencesBtn: 'Salva impostazioni',
+                                acceptAllBtn: 'Accetta tutti',
+                                acceptNecessaryBtn: 'Rifiuta tutti',
+                                closeIconLabel: 'Chiudi',
+                                sections: [
+                                    {
+                                        title: 'Cookie tecnici',
+                                        description: 'Questi cookie sono necessari per il funzionamento del sito.'
+                                    },
+                                    {
+                                        title: 'Cookie analitici',
+                                        description: 'Ci aiutano a capire come i visitatori interagiscono con il sito.',
+                                        linkedCategory: 'analytics'
+                                    }
+                                ]
+                            }
+                        },
+                    }
+                }
+            });
+            console.log("CookieConsent: Configurazione caricata.");
+        } catch (e) {
+            console.error("CookieConsent: Errore durante l'esecuzione:", e);
+        }
+    });
 </script>
 <!-- End Cookie Consent -->
 

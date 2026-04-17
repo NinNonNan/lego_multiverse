@@ -74,7 +74,6 @@ La verità è che abbiamo ancora tantissimo spazio per sperimentare, buttare den
 
 </script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@v3.1.0/dist/cookieconsent.css">
-<script src="https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@v3.1.0/dist/cookieconsent.umd.js"></script>
 
 <style>
      
@@ -98,84 +97,67 @@ La verità è che abbiamo ancora tantissimo spazio per sperimentare, buttare den
     }
 </style>
 
-<script>
- 
-window.dataLayer = window.dataLayer || [];
 
-document.addEventListener('DOMContentLoaded', function () {
+<script src="https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@v3.1.0/dist/cookieconsent.umd.js"></script>
+
+<script>
+     
+    window.dataLayer = window.dataLayer || [];
+
+     
     CookieConsent.run({
         guiOptions: {
             consentModal: {
-                layout: "box",
-                position: "bottom right",
-                equalWeightButtons: true,
-                flipButtons: false
+                layout: 'box',
+                position: 'bottom right',
+                equalWeightButtons: true
             },
             settingsModal: {
-                layout: "box",
-                position: "left",
-                equalWeightButtons: true,
-                flipButtons: false
+                layout: 'box',
+                position: 'left',
+                equalWeightButtons: true
             }
         },
         categories: {
-            necessary: { readOnly: true },
-            analytics: { enabled: false, readOnly: false }
+            necessary: {
+                enabled: true,
+                readOnly: true
+            },
+            analytics: {}
         },
         language: {
-            default: "it",
+            default: 'it',
             translations: {
                 it: {
                     consentModal: {
-                        title: "Gestione Cookie",
-                        description: "Ciao! Usiamo i cookie per migliorare la tua esperienza sul Devblog di ILGDR!. Puoi accettare tutto, rifiutare o personalizzare le tue scelte. Per maggiori informazioni, consulta la nostra <a href='/privacy-policy'>Cookie Policy</a>.",
-                        acceptAllBtn: "Accetta tutti",
-                        acceptNecessaryBtn: "Rifiuta tutto",
-                        showSettingsBtn: "Personalizza",
-                        closeIconLabel: "Chiudi", 
-                        footer: '<a href="/privacy-policy">Privacy Policy</a>'
+                        title: 'Consenso Cookie',
+                        description: 'Utilizziamo i cookie per migliorare l\'esperienza e analizzare il traffico del blog.',
+                        acceptAllBtn: 'Accetta tutti',
+                        acceptNecessaryBtn: 'Rifiuta tutti',
+                        showSettingsBtn: 'Gestisci preferenze'
                     },
                     settingsModal: {
-                        title: "Preferenze Cookie",
-                        acceptAllBtn: "Accetta tutti",
-                        acceptNecessaryBtn: "Rifiuta tutto",
-                        saveSettingsBtn: "Salva impostazioni",
-                        closeIconLabel: "Chiudi",
-                        sections: [
+                        title: 'Preferenze Cookie',
+                        saveSettingsBtn: 'Salva impostazioni',
+                        acceptAllBtn: 'Accetta tutti',
+                        rejectAllBtn: 'Rifiuta tutti',
+                        closeIconLabel: 'Chiudi',
+                        blocks: [
                             {
-                                title: "Cookie strettamente necessari",
-                                description: "Questi cookie sono essenziali per il corretto funzionamento del sito.",
-                                linkedCategory: "necessary"
+                                title: 'Cookie tecnici',
+                                description: 'Questi cookie sono necessari per il funzionamento del sito.'
                             },
                             {
-                                title: "Cookie Analitici",
-                                description: "Questi cookie ci aiutano a capire come interagisci con il sito.",
-                                linkedCategory: "analytics"
+                                title: 'Cookie analitici',
+                                description: 'Ci aiutano a capire come i visitatori interagiscono con il sito.',
+                                category: 'analytics'
                             }
                         ]
                     }
                 }
             }
-        },
-        onConsent: ({cookie}) => {
-            if (cookie.categories.includes('analytics')) {
-                window.dataLayer.push({
-                    'event': 'consent_update',
-                    'analytics_storage': 'granted'
-                });
-            }
-        },
-        onChange: ({cookie, changedCategories}) => {
-            if (changedCategories.includes('analytics')) {
-                const status = cookie.categories.includes('analytics') ? 'granted' : 'denied';
-                window.dataLayer.push({
-                    'event': 'consent_update',
-                    'analytics_storage': status
-                });
-            }
         }
     });
-});
 </script>
 
 
@@ -332,22 +314,14 @@ Non è una beta. È un campo di battaglia creativo.</p>
     updateWeather();
 </script>
 
+<div style="text-align: center; margin: 20px auto;">
+    <button type="button" data-cc="show-settings" style="background: none; border: none; text-decoration: underline; color: var(--secondary); cursor: pointer; font-size: 0.8em; opacity: 0.7; font-family: inherit;">Preferenze Cookie</button>
+</div>
+
 
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NLZMQ8SD"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
-
-
-<div style="text-align: center; margin-top: 20px; font-size: 0.9em;">
-    <a href="javascript:void(0)" id="open-cookie-settings" style="color: var(--secondary); text-decoration: underline;">Modifica preferenze cookie</a>
-</div>
-
-<script>
-    document.getElementById('open-cookie-settings').addEventListener('click', function(e) {
-        e.preventDefault();
-        if (typeof CookieConsent !== 'undefined') { CookieConsent.showPreferences(); }
-    });
-</script>
 
 <script>
     let menu = document.getElementById('menu');
