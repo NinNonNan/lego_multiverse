@@ -1,21 +1,18 @@
-baseURL = 'https://www.therpggame.com/'
+baseURL = 'https://esempio.it/'
 languageCode = 'it-it'
-title = 'ILGDR! Devblog'
+title = 'Nuovo Progetto'
 theme = 'PaperMod'
 
 [params]
     # Indichiamo a PaperMod dove sono i post per la Home Page
     mainSections = ["posts"]
-    
+
     # Opzioni specifiche per PaperMod
     defaultTheme = "auto"
     showCodeCopyButtons = true
     showReadingTime = true
+    displayFullLangName = true
 
-    [[params.socialIcons]]
-    name = "github"
-    url = "https://github.com/NinNonNan"
-
-    [[params.socialIcons]]
-    name = "kofi"
-    url = "https://ko-fi.com/therpggame"
+    [params.homeInfoParams]
+        Title = "Benvenuto nel nuovo progetto"
+        Content = "Lo scheletro della piattaforma è pronto. Puoi iniziare a creare contenuti in content/posts/."
