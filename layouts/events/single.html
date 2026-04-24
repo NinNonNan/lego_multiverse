@@ -1,0 +1,26 @@
+{{ define "main" }}
+
+<article class="event">
+
+  <header class="event-header">
+
+    <div class="event-kicker">
+      ARCHIVIO MULTIVERSO LEGO
+    </div>
+
+    <h1>{{ .Title }}</h1>
+
+    <div class="event-meta">
+      <span>ID: {{ .Params.event_id }}</span>
+      <span>TIPO: {{ .Params.event_type }}</span>
+    </div>
+
+  </header>
+
+  <section class="event-content">
+    {{ .Content }}
+  </section>
+
+</article>
+
+{{ end }}

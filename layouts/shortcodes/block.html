@@ -1,0 +1,10 @@
+{{- $type := .Get 0 | default "default" -}}
+{{- $icons := dict "origin" "🌟" "system" "🧱" "interpretation" "🔮" "transition" "🌀" "rule" "📜" "default" "🧩" -}}
+{{- $icon := index $icons $type | default (index $icons "default") -}}
+{{- $reality := site.Params.realityid | default "COORDINATE-UNKNOWN" -}}
+
+<div class="event-block {{ $type }}" data-type="{{ $type }}">
+  <div class="event-block-icon">{{ $icon }}</div>
+  <span class="reality-index">{{ $reality }}</span>
+  {{ .Inner | markdownify }}
+</div>

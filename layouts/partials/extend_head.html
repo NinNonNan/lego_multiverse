@@ -8,7 +8,7 @@
         --cc-bg: var(--theme, #fff);
         --cc-primary-color: var(--secondary, #2d4156);
         --cc-secondary-color: var(--content, #555);
-        
+
         --cc-btn-primary-bg: var(--secondary, #333); 
         --cc-btn-primary-text: var(--theme, #fff);
         --cc-btn-primary-hover-bg: var(--tertiary, #000);
@@ -16,18 +16,18 @@
         --cc-btn-secondary-bg: var(--tertiary, #eee);
         --cc-btn-secondary-text: var(--secondary, #333);
         --cc-btn-secondary-hover-bg: var(--border, #ddd);
-        
+
         /* Stile RPG: angoli netti o poco arrotondati */
         --cc-modal-border-radius: 0px;
         --cc-btn-border-radius: 2px;
         --cc-separator-border-color: var(--border, #eee);
         --cc-footer-bg: var(--tertiary, #f9f9f9);
 
-        /* Forza lo z-index per essere sicuri che sia sopra il widget meteo */
+        /* Forza lo z-index */
         z-index: 9999999 !important;
     }
 
-    /* Supporto per il tema scuro se il blog usa la classe .dark sul body */
+    /* Tema scuro */
     .dark #cc-main {
         --cc-bg: var(--theme, #1a1a1a);
         --cc-primary-color: var(--secondary, #eee);
@@ -35,81 +35,85 @@
     }
 </style>
 
-<!-- Caricamento Libreria Cookie Consent v3 -->
+<!-- Cookie Consent script -->
 <script src="https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@v3.1.0/dist/cookieconsent.umd.js"></script>
 
 <script>
-    /** Inizializza dataLayer per GTM */
-    window.dataLayer = window.dataLayer || [];
+window.dataLayer = window.dataLayer || [];
 
-    /** Attendi che il DOM sia pronto */
-    document.addEventListener('DOMContentLoaded', function(){
-        console.log("CookieConsent: Inizializzazione in corso...");
-        
-        try {
-            CookieConsent.run({
-                guiOptions: {
-                    consentModal: {
-                        layout: 'box',
-                        position: 'bottom right',
-                        equalWeightButtons: true
-                    },
-                    preferencesModal: {
-                        layout: 'box',
-                        position: 'right',
-                        equalWeightButtons: true
-                    }
+document.addEventListener('DOMContentLoaded', function () {
+    console.log("CookieConsent: Inizializzazione in corso...");
+
+    try {
+        CookieConsent.run({
+            guiOptions: {
+                consentModal: {
+                    layout: 'box',
+                    position: 'bottom right',
+                    equalWeightButtons: true
                 },
-                categories: {
-                    necessary: {
-                        enabled: true,
-                        readOnly: true
-                    },
-                    analytics: {
-                        enabled: false,
-                        readOnly: false
-                    }
+                preferencesModal: {
+                    layout: 'box',
+                    position: 'right',
+                    equalWeightButtons: true
+                }
+            },
+            categories: {
+                necessary: {
+                    enabled: true,
+                    readOnly: true
                 },
-                language: {
-                    default: 'it',
-                    translations: {
-                        it: {
-                            consentModal: {
-                                title: 'Consenso Cookie',
-                                description: 'Utilizziamo i cookie per migliorare l\'esperienza e analizzare il traffico del blog. Per maggiori informazioni, consulta la nostra <a href="/privacy-policy/" target="_blank">Privacy Policy</a>.',
-                                acceptAllBtn: 'Accetta tutti',
-                                acceptNecessaryBtn: 'Rifiuta tutti',
-                                showPreferencesBtn: 'Gestisci preferenze'
-                            },
-                            preferencesModal: {
-                                title: 'Preferenze Cookie',
-                                savePreferencesBtn: 'Salva impostazioni',
-                                acceptAllBtn: 'Accetta tutti',
-                                acceptNecessaryBtn: 'Rifiuta tutti',
-                                closeIconLabel: 'Chiudi',
-                                sections: [
-                                    {
-                                        title: 'Cookie tecnici',
-                                        description: 'Questi cookie sono necessari per il funzionamento del sito.'
-                                    },
-                                    {
-                                        title: 'Cookie analitici',
-                                        description: 'Ci aiutano a capire come i visitatori interagiscono con il sito.',
-                                        linkedCategory: 'analytics'
-                                    }
-                                ]
-                            }
+                analytics: {
+                    enabled: false,
+                    readOnly: false
+                }
+            },
+            language: {
+                default: 'it',
+                translations: {
+                    it: {
+                        consentModal: {
+                            title: 'Consenso Cookie',
+                            description: 'Utilizziamo i cookie per migliorare l\'esperienza e analizzare il traffico del blog. Consulta la nostra <a href="/privacy-policy/" target="_blank">Privacy Policy</a>.',
+                            acceptAllBtn: 'Accetta tutti',
+                            acceptNecessaryBtn: 'Rifiuta tutti',
+                            showPreferencesBtn: 'Gestisci preferenze'
                         },
+                        preferencesModal: {
+                            title: 'Preferenze Cookie',
+                            savePreferencesBtn: 'Salva impostazioni',
+                            acceptAllBtn: 'Accetta tutti',
+                            acceptNecessaryBtn: 'Rifiuta tutti',
+                            closeIconLabel: 'Chiudi',
+                            sections: [
+                                {
+                                    title: 'Cookie tecnici',
+                                    description: 'Necessari per il funzionamento del sito.'
+                                },
+                                {
+                                    title: 'Cookie analitici',
+                                    description: 'Ci aiutano a capire l\'utilizzo del sito.',
+                                    linkedCategory: 'analytics'
+                                }
+                            ]
+                        }
                     }
                 }
-            });
-            console.log("CookieConsent: Configurazione caricata.");
-        } catch (e) {
-            console.error("CookieConsent: Errore durante l'esecuzione:", e);
-        }
-    });
+            }
+        });
+
+        console.log("CookieConsent: Configurazione caricata.");
+    } catch (e) {
+        console.error("CookieConsent: Errore durante l'esecuzione:", e);
+    }
+});
 </script>
+
 <!-- End Cookie Consent -->
 
 <!-- Google Tag Manager -->
 <!-- End Google Tag Manager -->
+
+<!-- Event CSS (Hugo Pipes) -->
+{{ $events := resources.Get "css/extended/events.css" | minify | fingerprint }}
+<link rel="stylesheet" href="{{ $events.RelPermalink }}">
