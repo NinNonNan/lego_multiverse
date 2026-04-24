@@ -31,21 +31,22 @@ jobs:
         with:
           hugo-version: 'latest'
           extended: true
-      - name: Set Reality Identity
+      - name: Set Reality Environment
         run: |
+          # Forziamo tutto in minuscolo per evitare errori DNS/URL
+          OWNER=$(echo "${{ github.repository_owner }}" | tr '[:upper:]' '[:lower:]')
+          REPO=$(echo "${{ github.event.repository.name }}" | tr '[:upper:]' '[:lower:]')
+          
           if [ "${{ github.ref_name }}" = "main" ]; then
+            echo "BASE_URL=https://${OWNER}.github.io/${REPO}/" >> $GITHUB_ENV
             echo "HUGO_PARAMS_REALITYID=AXIS-PRIME" >> $GITHUB_ENV
-          else
-            echo "HUGO_PARAMS_REALITYID=AXIS-${{ github.ref_name }}" >> $GITHUB_ENV
-          fi
-      - name: Determine Destination
-        run: |
-          if [ "${{ github.ref_name }}" = "main" ]; then
-            echo "BASE_URL=https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/" >> $GITHUB_ENV
             echo "PUBLISH_DIR=public" >> $GITHUB_ENV
           else
-            echo "BASE_URL=https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/${{ github.ref_name }}/" >> $GITHUB_ENV
-            echo "PUBLISH_DIR=public/${{ github.ref_name }}" >> $GITHUB_ENV
+            # Sostituiamo / con - nel nome del branch per l'URL (es. reality/test -> reality-test)
+            SLUG=$(echo "${{ github.ref_name }}" | sed 's/\//-/g')
+            echo "BASE_URL=https://${OWNER}.github.io/${REPO}/${SLUG}/" >> $GITHUB_ENV
+            echo "HUGO_PARAMS_REALITYID=AXIS-${SLUG^^}" >> $GITHUB_ENV
+            echo "PUBLISH_DIR=public/${SLUG}" >> $GITHUB_ENV
           fi
       - name: Build
         run: hugo --minify --baseURL "${{ env.BASE_URL }}" -d "${{ env.PUBLISH_DIR }}"
