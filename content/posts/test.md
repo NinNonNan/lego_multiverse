@@ -19,6 +19,10 @@ Il rilevatore di realtà è attivo. Controlla l'angolo in basso a destra di ques
 Se le coordinate mostrano `AXIS-PRIME`, sei sulla linea temporale principale. Se mostrano un nome branch, la biforcazione è avvenuta con successo.
 {{< /block >}}
 
-QUESTO E' IL TEST PER LA REALTA' ALTERNATIVA!
+{{< block interpretation >}}
+**RILEVAZIONE ANOMALIA**
+In questa coordinata (`esperimento-01`), la saturazione del sistema ha prodotto un'eccedenza di mattoncini trasparenti. 
+La struttura è stabile, ma la rifrazione della realtà è alterata.
+{{< /block >}}
 
 ---
